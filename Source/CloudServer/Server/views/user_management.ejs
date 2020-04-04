@@ -1,0 +1,278 @@
+<% if (user.role == "admin") { %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>Salinity Monitoring - HCMC University of Technology</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header">
+    <!-- ============================================================== -->
+    <!-- Preloader -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Wrapper -->
+    <!-- ============================================================== -->
+    <div id="wrapper">
+        <%- include ./partials/navigation.ejs %>
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">User Management</h4> </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <ol class="breadcrumb">
+                            <li><a href="index">Dashboard</a></li>
+                            <li class="active">User Mangament</li>
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                
+                <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Admin User</h3>
+                            <!-- <p class="text-muted">Add class <code>.table</code></p> -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>Number</th>
+                                        <th>Full Name</th>
+                                        <th>Email</th>
+                                        <th>Username</th>
+                                        <th>Role</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    <% all_user.forEach(function(user_element) { %>
+                                      <% if(user_element.role == "admin") { %>
+                                        <tr>
+                                          <td><%= user_element.usernumber %></td>
+                                          <td><%= user_element.fullname %></td>
+                                          <td><%= user_element.email %></td>
+                                          <td><%= user_element.username %></td>
+                                          <td><%= user_element.role %></td>
+                                        </tr>
+                                      <% } %>
+                                    <% }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                
+                <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Common User</h3>
+                            <!-- <p class="text-muted">Add class <code>.table</code></p> -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>Number</th>
+                                        <th>Full Name</th>
+                                        <th>Email</th>
+                                        <th>Username</th>
+                                        <th>Role</th>
+                                        <th>Action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    <% all_user.forEach(function(user_element) { %>
+                                      <% if(user_element.role == "user") { %>
+                                        <tr>
+                                          <td><%= user_element.usernumber %></td>
+                                          <td><%= user_element.fullname %></td>
+                                          <td><%= user_element.email %></td>
+                                          <td><%= user_element.username %></td>
+                                          <td>
+                                            <select id = "<%= user_element._id %>_select" class="form-control row">
+                                              <option>USER</option>
+                                              <option>ADMIN</option>
+                                              <option>WAITTING</option>
+                                            </select>
+                                          </td>
+                                          <td>
+                                            <a onclick="UpdateRoleUser('<%= user_element._id %>')" class="btn btn btn-rounded btn-default btn-outline m-r-5">
+                                              <i class="ti-check text-success m-r-5"></i> Update
+                                            </a>
+                                            <a onclick="DeleteUser('<%= user_element._id %>', <%= user_element.usernumber %>)" class="btn-rounded btn btn-default btn-outline">
+                                              <i class="ti-close text-danger m-r-5"></i> Delete
+                                            </a>
+                                          </td>
+                                        </tr>
+                                      <% } %>
+                                    <% }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                
+                <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Waitting User</h3>
+                            <!-- <p class="text-muted">Add class <code>.table</code></p> -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th>Number</th>
+                                        <th>Full Name</th>
+                                        <th>Email</th>
+                                        <th>Username</th>
+                                        <th>Role</th>
+                                        <th>Action</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                    <% all_user.forEach(function(user_element) { %>
+                                      <% if(user_element.role == "waitting") { %>
+                                        <tr>
+                                          <td><%= user_element.usernumber %></td>
+                                          <td><%= user_element.fullname %></td>
+                                          <td><%= user_element.email %></td>
+                                          <td><%= user_element.username %></td>
+                                          <td>
+                                            <select id = "<%= user_element._id %>_select" class="form-control row">
+                                              <option>WAITTING</option>
+                                              <option>USER</option>
+                                              <option>ADMIN</option>
+                                            </select>
+                                          </td>
+                                          <td>
+                                            <a onclick="UpdateRoleUser('<%= user_element._id %>')" class="btn btn btn-rounded btn-default btn-outline m-r-5">
+                                              <i class="ti-check text-success m-r-5"></i> Update
+                                            </a>
+                                            <a onclick="DeleteUser('<%= user_element._id %>', <%= user_element.usernumber %>)" class="btn-rounded btn btn-default btn-outline">
+                                              <i class="ti-close text-danger m-r-5"></i> Delete
+                                            </a>
+                                          </td>
+                                        </tr>
+                                      <% } %>
+                                    <% }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                
+                <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Add User</h3>
+                            <form class="form-horizontal form-material">
+                              <div class="form-group">
+                                <label class="col-md-12">User Name</label>
+                                <div class="col-md-12">
+                                  <input id="username" type="text" class="form-control form-control-line">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-md-12">Password</label>
+                                <div class="col-md-12">
+                                  <input id="password"type="password" class="form-control form-control-line">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-md-12">Retype Password</label>
+                                <div class="col-md-12">
+                                  <input id="repassword"type="password" class="form-control form-control-line">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-md-12">Full Name</label>
+                                <div class="col-md-12">
+                                  <input id="fullname" type="text" class="form-control form-control-line">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-md-12">Email</label>
+                                <div class="col-md-12">
+                                  <input id="email" type="email" class="form-control form-control-line">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="col-md-12">Phone No</label>
+                                <div class="col-md-12">
+                                  <input id="phone" type="text" class="form-control form-control-line">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-sm-12">
+                                  <input type="button" onclick="AddAnUser()" class="btn btn-info" value="Add User"></button>
+                                </div>
+                              </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                
+            </div>
+            <!-- /.container-fluid -->
+            <%- include ./partials/footer.ejs %>
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/user_management.js"></script>
+</body>
+
+</html>
+<% } %>

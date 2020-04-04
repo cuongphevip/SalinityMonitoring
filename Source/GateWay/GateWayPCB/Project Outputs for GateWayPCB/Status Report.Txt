@@ -1,0 +1,23 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [GateWayPCB.PrjPcb]
+   Generated File[FinalGateWay.GTL]
+   Generated File[FinalGateWay.GBL]
+   Generated File[FinalGateWay.GPB]
+   Generated File[FinalGateWay.GPT]
+   Generated File[FinalGateWay.GTO]
+   Generated File[FinalGateWay.GTS]
+   Generated File[FinalGateWay.GBS]
+   Generated File[FinalGateWay.GBO]
+   Generated File[FinalGateWay.GM1]
+   Generated File[FinalGateWay.GD1]
+   Generated File[FinalGateWay.GG1]
+   Generated File[FinalGateWay.RUL]
+   Generated File[FinalGateWay.EXTREP]
+   Generated File[FinalGateWay.REP]
+
+
+Files Generated   : 14
+Documents Printed : 0
+
+Finished Output Generation At 9:20:10 AM On 6/22/2018

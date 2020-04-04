@@ -1,0 +1,13 @@
+Connected to database
+[0mGET /index [32m200 [0m256.580 ms - 16860[0m
+a user connected
+[0mGET /get_all_nodes [36m304 [0m240.343 ms - -[0m
+[0mGET /get_latest_data/1 [36m304 [0m240.210 ms - -[0m
+[0mGET /get_latest_data/2 [36m304 [0m1187.196 ms - -[0m
+[0mGET /get_latest_data/3 [36m304 [0m1188.391 ms - -[0m
+a user connected
+[0mGET /get_latest_data/5 [36m304 [0m2142.073 ms - -[0m
+[0mGET /get_latest_data/6 [36m304 [0m2143.537 ms - -[0m
+[0mGET /get_latest_data/4 [36m304 [0m2148.247 ms - -[0m
+a user connected
+[0mGET /get_latest_data/7 [36m304 [0m2847.722 ms - -[0m

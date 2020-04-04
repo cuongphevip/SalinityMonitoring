@@ -1,0 +1,12 @@
+***** 17 - Jan *****
+Initialize a repository on GitHub. Commit Docs, Reports and References.
+
+***** 18 - Jan *****
+Find out where salinity sensor is sold at Vietnam.
+Asking at shop Trang An, Tran Hung Dao, District 5, Ho Chi Minh City.
+Shoot a clip for it.
+
+***** 28 - Jan *****
+Hire a Cloud Server successfully.
+Start testing server by Hung Tran.
+Make first web server by Cuong Vo.
